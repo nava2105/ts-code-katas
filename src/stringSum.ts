@@ -6,6 +6,11 @@ Replace entered number with 0 (zero) if entered number is not a natural number.
 Extra: accept more string numbers to get the addiction
  */
 
-const sum = (numOne: string, num2: string) => '';
+export const sum = (...nums: string[]): string => {
+  const isNaturalNumber = (num: string): boolean => /^\d+$/.test(num) && parseInt(num, 10) > 0;
 
-export { sum };
+  return nums
+    .map(num => (isNaturalNumber(num) ? parseInt(num, 10) : 0)) // Replace invalid numbers with 0
+    .reduce((sum, current) => sum + current, 0)                 // Sum up all valid numbers
+    .toString();                                               // Convert the result back to a string
+};
