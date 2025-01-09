@@ -11,6 +11,17 @@ Return:
 - Is a draw
 */
 
-const game = (playerOneMove: string, playerTwoMove: string) => '';
-
-export { game };
+export const game = (playerOneMove: string, playerTwoMove: string) => {
+  const rules: Record<string, string> = {
+    Rock: 'Scissors',
+    Scissors: 'Paper',
+    Paper: 'Rock',
+  };
+  if (playerOneMove === playerTwoMove) {
+    return 'Is a draw';
+  }
+  if (rules[playerOneMove] === playerTwoMove) {
+    return 'Player one wins';
+  }
+  return 'Player two wins';
+}
