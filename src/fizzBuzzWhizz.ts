@@ -27,13 +27,15 @@ Add the following new rule, if a number is prime return Whizz. Only worry about 
   5      BuzzWhizz
  */
 export const game = (input: number) => {
+  if (input < 1 || !Number.isInteger(input)) return 'Error';
+  if (input < 1) return 'Error';
   let result = "";
-
   if (input % 3 === 0) result += 'Fizz';
   if (input % 5 === 0) result += 'Buzz';
   
   const isPrime = (num: number): boolean => {
     if (num < 2) return false;
+    if (num > 100) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
       if (num % i === 0) return false;
     }
